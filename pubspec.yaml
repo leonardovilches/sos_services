@@ -29,11 +29,17 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   parse_server_sdk_flutter: ^2.1.0
+  mobx: ^1.2.1+4
+  flutter_mobx: ^1.1.0+2
+  get_it: ^4.0.4
 
 
 dev_dependencies:
+  mobx_codegen: ^1.1.2
+  build_runner: ^1.10.1
   flutter_test:
     sdk: flutter
+  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
