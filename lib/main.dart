@@ -36,6 +36,11 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         appBarTheme: AppBarTheme(
           elevation: 0
+        ),
+        textSelectionTheme: TextSelectionThemeData(
+          cursorColor: Colors.orange,
+          selectionColor: Colors.green,
+          selectionHandleColor: Colors.blue,
         )
       ),
       home: BaseScreen(),
