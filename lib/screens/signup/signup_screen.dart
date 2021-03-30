@@ -40,6 +40,7 @@ class SignUpScreen extends StatelessWidget {
                       ),
                       Observer(builder: (_){
                         return TextField(
+                          enabled: !signUpStore.loading,
                           decoration: InputDecoration(
                             border: const OutlineInputBorder(),
                             isDense: true,
@@ -57,6 +58,7 @@ class SignUpScreen extends StatelessWidget {
                       Observer(
                         builder: (_) {
                           return TextField(
+                            enabled: !signUpStore.loading,
                             decoration: InputDecoration(
                               border: const OutlineInputBorder(),
                               isDense: true,
@@ -77,6 +79,7 @@ class SignUpScreen extends StatelessWidget {
                       Observer(
                         builder: (_) {
                           return TextField(
+                            enabled: !signUpStore.loading,
                             decoration: InputDecoration(
                               border: const OutlineInputBorder(),
                               isDense: true,
@@ -100,6 +103,7 @@ class SignUpScreen extends StatelessWidget {
                       Observer(
                         builder: (_) {
                           return TextField(
+                            enabled: !signUpStore.loading,
                             decoration: InputDecoration(
                               border: const OutlineInputBorder(),
                               isDense: true,
@@ -118,6 +122,7 @@ class SignUpScreen extends StatelessWidget {
                       Observer(
                         builder: (_) {
                           return TextField(
+                            enabled: !signUpStore.loading,
                             decoration: InputDecoration(
                               border: const OutlineInputBorder(),
                               isDense: true,
@@ -128,26 +133,31 @@ class SignUpScreen extends StatelessWidget {
                           );
                         }
                       ),
-                      Container(
-                        height: 40,
-                        margin: const EdgeInsets.only(top: 20, bottom: 12),
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(Colors.orange),
-                            elevation: MaterialStateProperty.all(1),
-                            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                                // side: BorderSide(color: Colors.red)
-                              )
-                            )
-                          ),
-                          
-                          child: Text(
-                            'CADASTRAR'
-                          ),
-                          onPressed: (){},
-                        ),
+                      Observer(
+                        builder: (_) {
+                          return Container(
+                            height: 40,
+                            margin: const EdgeInsets.only(top: 20, bottom: 12),
+                            child: ElevatedButton(
+                              child: signUpStore.loading 
+                                ? CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation(Colors.white),
+                                  )
+                                : Text('CADASTRAR'),
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all<Color>(Colors.orange),
+                                elevation: MaterialStateProperty.all(1),
+                                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    // side: BorderSide(color: Colors.red)
+                                  )
+                                ),
+                              ),
+                              onPressed: signUpStore.signUpPressed,
+                            ),
+                          );
+                        }
                       ),
                       Divider(color: Colors.black,),
                       Padding(

@@ -43,6 +43,20 @@ mixin _$SignUpStore on _SignUpStore, Store {
       (_$pass2ValidComputed ??= Computed<bool>(() => super.pass2Valid,
               name: '_SignUpStore.pass2Valid'))
           .value;
+  Computed<bool> _$isFormValidComputed;
+
+  @override
+  bool get isFormValid =>
+      (_$isFormValidComputed ??= Computed<bool>(() => super.isFormValid,
+              name: '_SignUpStore.isFormValid'))
+          .value;
+  Computed<Function> _$signUpPressedComputed;
+
+  @override
+  Function get signUpPressed =>
+      (_$signUpPressedComputed ??= Computed<Function>(() => super.signUpPressed,
+              name: '_SignUpStore.signUpPressed'))
+          .value;
 
   final _$nameAtom = Atom(name: '_SignUpStore.name');
 
@@ -119,6 +133,28 @@ mixin _$SignUpStore on _SignUpStore, Store {
     });
   }
 
+  final _$loadingAtom = Atom(name: '_SignUpStore.loading');
+
+  @override
+  bool get loading {
+    _$loadingAtom.reportRead();
+    return super.loading;
+  }
+
+  @override
+  set loading(bool value) {
+    _$loadingAtom.reportWrite(value, super.loading, () {
+      super.loading = value;
+    });
+  }
+
+  final _$_signupAsyncAction = AsyncAction('_SignUpStore._signup');
+
+  @override
+  Future<void> _signup() {
+    return _$_signupAsyncAction.run(() => super._signup());
+  }
+
   final _$_SignUpStoreActionController = ActionController(name: '_SignUpStore');
 
   @override
@@ -177,6 +213,17 @@ mixin _$SignUpStore on _SignUpStore, Store {
   }
 
   @override
+  void setLoading(bool value) {
+    final _$actionInfo = _$_SignUpStoreActionController.startAction(
+        name: '_SignUpStore.setLoading');
+    try {
+      return super.setLoading(value);
+    } finally {
+      _$_SignUpStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 name: ${name},
@@ -184,11 +231,14 @@ email: ${email},
 phone: ${phone},
 pass1: ${pass1},
 pass2: ${pass2},
+loading: ${loading},
 nameValid: ${nameValid},
 emailValid: ${emailValid},
 phoneValid: ${phoneValid},
 pass1Valid: ${pass1Valid},
-pass2Valid: ${pass2Valid}
+pass2Valid: ${pass2Valid},
+isFormValid: ${isFormValid},
+signUpPressed: ${signUpPressed}
     ''';
   }
 }

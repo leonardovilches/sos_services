@@ -31,8 +31,8 @@ class MyApp extends StatelessWidget {
       title: 'SOS SERVICES',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.purple,
-        scaffoldBackgroundColor: Colors.purple,
+        primaryColor: Colors.green,
+        scaffoldBackgroundColor: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         appBarTheme: AppBarTheme(
           elevation: 0
