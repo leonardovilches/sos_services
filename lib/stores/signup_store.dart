@@ -1,19 +1,22 @@
+import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 import 'package:sos_services/helpers/extensions.dart';
+import 'package:sos_services/models/user.dart';
+import 'package:sos_services/repositories/user_repository.dart';
+import 'package:sos_services/stores/user_manager_store.dart';
 
 part 'signup_store.g.dart';
 
 class SignUpStore = _SignUpStore with _$SignUpStore;
 
 abstract class _SignUpStore with Store {
-
   _SignUpStore() {
-    autorun((_) {
-      print(pass1);
-      print(pass2);
-    });
+    // autorun((_) {
+    //   print(pass1);
+    //   print(pass2);
+    // });
   }
-  
+
   @observable
   String name;
 
@@ -23,9 +26,9 @@ abstract class _SignUpStore with Store {
   @computed
   bool get nameValid => name != null && name.length > 6;
   String get nameError {
-    if(name == null || nameValid)
+    if (name == null || nameValid)
       return null;
-    else if(name.isEmpty) 
+    else if (name.isEmpty)
       return 'Campo Obrigatório.';
     else
       return 'Nome muito curto.';
@@ -40,9 +43,9 @@ abstract class _SignUpStore with Store {
   @computed
   bool get emailValid => email != null && email.isEmailValid();
   String get emailError {
-    if(email == null || emailValid)
+    if (email == null || emailValid)
       return null;
-    else if(email.isEmpty) 
+    else if (email.isEmpty)
       return 'Campo Obrigatório.';
     else
       return 'E-mail inválido.';
@@ -57,9 +60,9 @@ abstract class _SignUpStore with Store {
   @computed
   bool get phoneValid => phone != null && phone.length >= 14;
   String get phoneError {
-    if(phone == null || phoneValid)
+    if (phone == null || phoneValid)
       return null;
-    else if(phone.isEmpty) 
+    else if (phone.isEmpty)
       return 'Campo Obrigatório.';
     else
       return 'Celular Inválido.';
@@ -74,9 +77,9 @@ abstract class _SignUpStore with Store {
   @computed
   bool get pass1Valid => pass1 != null && pass1.length >= 6;
   String get pass1Error {
-    if(pass1 == null || pass1Valid)
+    if (pass1 == null || pass1Valid)
       return null;
-    else if(pass1.isEmpty) 
+    else if (pass1.isEmpty)
       return 'Campo Obrigatório.';
     else
       return 'Senha muito curta.';
@@ -91,20 +94,24 @@ abstract class _SignUpStore with Store {
   @computed
   bool get pass2Valid => pass2 != null && pass2 == pass1;
   String get pass2Error {
-    if(pass2 == null ||pass2Valid)
+    if (pass2 == null || pass2Valid)
       return null;
     else
       return 'Senhas não coincidem.';
   }
 
   @computed
-  bool get isFormValid => nameValid && emailValid && phoneValid && pass1Valid && pass2Valid;
+  bool get isFormValid =>
+      nameValid && emailValid && phoneValid && pass1Valid && pass2Valid;
 
   @computed
   Function get signUpPressed => (isFormValid && !loading) ? _signup : null;
 
   @observable
   bool loading = false;
+
+  @observable
+  String error;
 
   @action
   void setLoading(bool value) => loading = value;
@@ -113,11 +120,17 @@ abstract class _SignUpStore with Store {
   Future<void> _signup() async {
     loading = true;
 
-    autorun((_) {
-      print(loading);
-    });
+    final user = User(name: name, email: email, phone: phone, password: pass1);
 
-    await Future.delayed(Duration(seconds: 10));
+    try {
+      final resultUser = await UserRepository().signUp(user);
+      GetIt.I<UserManagerStore>().setUser(resultUser);
+      print(resultUser);
+    } catch (e) {
+      error = e;
+    }
+
+    // await Future.delayed(Duration(seconds: 10));
 
     loading = false;
   }
