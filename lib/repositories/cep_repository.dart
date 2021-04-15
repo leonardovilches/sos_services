@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:sos_services/models/Address.dart';
+import 'package:sos_services/models/address.dart';
 import 'package:sos_services/models/city.dart';
 import 'package:sos_services/repositories/ibge_repository.dart';
 

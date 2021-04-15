@@ -1,5 +1,5 @@
 import 'package:mobx/mobx.dart';
-import 'package:sos_services/models/Address.dart';
+import 'package:sos_services/models/address.dart';
 import 'package:sos_services/repositories/cep_repository.dart';
 part 'cep_store.g.dart';
 

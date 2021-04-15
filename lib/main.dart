@@ -5,6 +5,7 @@ import 'package:sos_services/repositories/cep_repository.dart';
 import 'package:sos_services/repositories/ibge_repository.dart';
 import 'package:sos_services/screens/base/base_screen.dart';
 import 'package:sos_services/stores/category_store.dart';
+import 'package:sos_services/stores/home_store.dart';
 import 'package:sos_services/stores/page_store.dart';
 import 'package:sos_services/stores/user_manager_store.dart';
 
@@ -17,6 +18,7 @@ void main() async {
 
 void setupLocators() {
   GetIt.I.registerSingleton(PageStore());
+  GetIt.I.registerSingleton(HomeStore());
   GetIt.I.registerSingleton(UserManagerStore());
   GetIt.I.registerSingleton(CategoryStore());
 }
