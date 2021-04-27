@@ -38,8 +38,11 @@ dependencies:
   dio: ^3.0.10
   shared_preferences: ^0.5.4
   path: ^1.8.0
-
- 
+  cached_network_image: ^2.4.1
+  intl: ^0.17.0
+  flutter_localizations:
+    sdk: flutter
+  
 dev_dependencies:
   mobx_codegen: ^1.1.2
   build_runner: ^1.10.1

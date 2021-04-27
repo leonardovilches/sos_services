@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get_it/get_it.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 import 'package:sos_services/repositories/cep_repository.dart';
@@ -38,15 +39,24 @@ class MyApp extends StatelessWidget {
       title: 'SOS SERVICES',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primaryColor: Colors.purple,
-          scaffoldBackgroundColor: Colors.purple,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          appBarTheme: AppBarTheme(elevation: 0),
-          textSelectionTheme: TextSelectionThemeData(
-            cursorColor: Colors.orange,
-            selectionColor: Colors.purple,
-            selectionHandleColor: Colors.blue,
-          )),
+        primaryColor: Colors.purple,
+        scaffoldBackgroundColor: Colors.purple,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        appBarTheme: AppBarTheme(elevation: 0),
+        textSelectionTheme: TextSelectionThemeData(
+          cursorColor: Colors.orange,
+          selectionColor: Colors.purple,
+          selectionHandleColor: Colors.blue,
+        ),
+      ),
+      supportedLocales: const [
+        Locale('pt', 'BR'),
+      ],
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
       home: BaseScreen(),
     );
   }

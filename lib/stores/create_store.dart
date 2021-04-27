@@ -93,7 +93,7 @@ abstract class _CreateStore with Store {
   @computed
   num get price {
     if (priceText.contains(',')) {
-      return num.tryParse(priceText.replaceAll(RegExp('[^0-9]'), ''));
+      return num.tryParse(priceText.replaceAll(RegExp('[^0-9]'), '.'));
     } else {
       return num.tryParse(priceText);
     }
