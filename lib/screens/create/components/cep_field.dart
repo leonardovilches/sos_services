@@ -43,7 +43,7 @@ class CepField extends StatelessWidget {
               return Container();
             else if (cepStore.address == null && cepStore.error == null)
               return LinearProgressIndicator(
-                valueColor: AlwaysStoppedAnimation(Colors.purple),
+                valueColor: AlwaysStoppedAnimation(Colors.orange),
                 backgroundColor: Colors.transparent,
               );
             else if (cepStore.error != null)

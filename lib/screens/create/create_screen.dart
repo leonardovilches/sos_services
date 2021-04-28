@@ -70,14 +70,14 @@ class _CreateScreenState extends State<CreateScreen> {
                           'Salvando Anúncio',
                           style: TextStyle(
                             fontSize: 18,
-                            color: Colors.purple,
+                            color: Colors.orange,
                           ),
                         ),
                         const SizedBox(
                           height: 16,
                         ),
                         CircularProgressIndicator(
-                          valueColor: AlwaysStoppedAnimation(Colors.purple),
+                          valueColor: AlwaysStoppedAnimation(Colors.orange),
                         )
                       ],
                     ),
@@ -150,8 +150,8 @@ class _CreateScreenState extends State<CreateScreen> {
                                 ),
                               ),
                               textColor: Colors.white,
-                              color: Colors.orange,
-                              disabledColor: Colors.orange.withAlpha(120),
+                              color: Colors.blue[800],
+                              disabledColor: Colors.blue[800].withAlpha(120),
                               materialTapTargetSize:
                                   MaterialTapTargetSize.shrinkWrap,
                               onPressed: createStore.sendPressed,

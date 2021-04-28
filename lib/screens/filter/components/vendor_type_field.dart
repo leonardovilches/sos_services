@@ -35,11 +35,11 @@ class VendorTypeField extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
                       color: filter.isTypeParticular
-                          ? Colors.purple
+                          ? Colors.orange
                           : Colors.transparent,
                       border: Border.all(
                         color: filter.isTypeParticular
-                            ? Colors.purple
+                            ? Colors.orange
                             : Colors.grey,
                       ),
                     ),
@@ -74,11 +74,11 @@ class VendorTypeField extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(25),
                       color: filter.isTypeProfessional
-                          ? Colors.purple
+                          ? Colors.orange
                           : Colors.transparent,
                       border: Border.all(
                         color: filter.isTypeProfessional
-                            ? Colors.purple
+                            ? Colors.orange
                             : Colors.grey,
                       ),
                     ),

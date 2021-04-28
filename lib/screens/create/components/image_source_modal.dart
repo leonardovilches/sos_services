@@ -68,7 +68,7 @@ class ImageSourceModal extends StatelessWidget {
       aspectRatio: CropAspectRatio(ratioX: 1, ratioY: 1),
       androidUiSettings: AndroidUiSettings(
         toolbarTitle: 'Editar Imagem',
-        toolbarColor: Colors.purple,
+        toolbarColor: Colors.orange,
         toolbarWidgetColor: Colors.white,
       ),
       iosUiSettings: IOSUiSettings(

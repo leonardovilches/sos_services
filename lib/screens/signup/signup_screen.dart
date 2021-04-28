@@ -144,8 +144,8 @@ class SignUpScreen extends StatelessWidget {
                                 )
                               : Text('CADASTRAR'),
                           style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all<Color>(Colors.orange),
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Colors.blue[800]),
                             elevation: MaterialStateProperty.all(1),
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(RoundedRectangleBorder(
@@ -175,7 +175,7 @@ class SignUpScreen extends StatelessWidget {
                               'Entrar',
                               style: TextStyle(
                                 decoration: TextDecoration.underline,
-                                color: Colors.purple,
+                                color: Colors.orange,
                                 fontSize: 16,
                               ),
                             ),

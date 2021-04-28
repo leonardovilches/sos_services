@@ -45,14 +45,14 @@ class FilterScreen extends StatelessWidget {
                                 MaterialStateProperty.resolveWith<Color>(
                               (Set<MaterialState> states) {
                                 if (states.contains(MaterialState.disabled))
-                                  return Colors.orange.withAlpha(120);
+                                  return Colors.blue[800].withAlpha(120);
                                 else
-                                  return Colors.orange;
+                                  return Colors.blue[800];
                               },
                             ),
                             // backgroundColor: MaterialStateProperty.all<Color>(
-                            //     Colors.orange),
-                            elevation: MaterialStateProperty.all(1),
+                            //     Colors.blue[800]),
+                            elevation: MaterialStateProperty.all(0),
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(
                               RoundedRectangleBorder(

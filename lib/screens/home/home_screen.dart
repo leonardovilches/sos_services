@@ -148,7 +148,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           homeStore.loadNextPage();
                           return Container(
                             child: LinearProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation(Colors.purple),
+                              valueColor: AlwaysStoppedAnimation(Colors.orange),
                             ),
                           );
                         },

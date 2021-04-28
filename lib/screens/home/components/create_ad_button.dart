@@ -81,7 +81,7 @@ class _CreateAdButtonState extends State<CreateAdButton>
                 ],
               ),
               textColor: Colors.white,
-              color: Colors.orange,
+              color: Colors.blue[800],
               onPressed: () {
                 GetIt.I<PageStore>().setPage(1);
               },

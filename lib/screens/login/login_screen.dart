@@ -88,7 +88,7 @@ class LoginScreen extends StatelessWidget {
                               'Esqueceu sua senha?',
                               style: TextStyle(
                                 decoration: TextDecoration.underline,
-                                color: Colors.purple,
+                                color: Colors.orange,
                               ),
                             ),
                             onTap: () {},
@@ -117,13 +117,13 @@ class LoginScreen extends StatelessWidget {
                                   MaterialStateProperty.resolveWith<Color>(
                                 (Set<MaterialState> states) {
                                   if (states.contains(MaterialState.disabled))
-                                    return Colors.orange.withAlpha(180);
+                                    return Colors.blue[800].withAlpha(180);
                                   else
-                                    return Colors.orange;
+                                    return Colors.blue[800];
                                 },
                               ),
                               // backgroundColor: MaterialStateProperty.all<Color>(
-                              //     Colors.orange),
+                              //     Colors.blue[800]),
                               elevation: MaterialStateProperty.all(1),
                               shape: MaterialStateProperty.all<
                                       RoundedRectangleBorder>(
@@ -162,7 +162,7 @@ class LoginScreen extends StatelessWidget {
                               'Cadastre-se',
                               style: TextStyle(
                                 decoration: TextDecoration.underline,
-                                color: Colors.purple,
+                                color: Colors.orange,
                                 fontSize: 16,
                               ),
                             ),
