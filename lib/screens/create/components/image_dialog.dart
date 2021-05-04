@@ -19,7 +19,7 @@ class ImageDialog extends StatelessWidget {
               Navigator.of(context).pop();
               onDelete();
             },
-          )
+          ),
         ],
       ),
     );

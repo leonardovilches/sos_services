@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
+import 'package:sos_services/screens/account/account_screen.dart';
 import 'package:sos_services/screens/create/create_screen.dart';
 import 'package:sos_services/screens/home/home_screen.dart';
 import 'package:sos_services/stores/page_store.dart';
@@ -31,17 +32,12 @@ class _BaseScreenState extends State<BaseScreen> {
           HomeScreen(),
           CreateScreen(),
           Container(
-            color: Colors.brown,
+            color: Colors.yellow,
           ),
           Container(
             color: Colors.pink,
           ),
-          Container(
-            color: Colors.red,
-          ),
-          Container(
-            color: Colors.yellow,
-          ),
+          AccountScreen(),
         ],
       ),
     );

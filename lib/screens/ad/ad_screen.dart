@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:sos_services/models/ad.dart';
 import 'package:sos_services/screens/ad/components/main_panel.dart';
 
+import 'components/bottom_bar.dart';
 import 'components/description_panel.dart';
 import 'components/location_panel.dart';
 import 'components/user_panel.dart';
@@ -20,40 +21,45 @@ class AdScreen extends StatelessWidget {
         title: Text('Anúncio'),
         centerTitle: true,
       ),
-      body: ListView(
+      body: Stack(
         children: [
-          Container(
-            height: 280,
-            child: Carousel(
-              images: ad.images
-                  .map(
-                    (url) => CachedNetworkImageProvider(url),
-                  )
-                  .toList(),
-              dotSize: 4,
-              dotBgColor: Colors.transparent,
-              dotColor: Colors.blue[800],
-              autoplay: false,
-            ),
+          ListView(
+            children: [
+              Container(
+                height: 280,
+                child: Carousel(
+                  images: ad.images
+                      .map(
+                        (url) => CachedNetworkImageProvider(url),
+                      )
+                      .toList(),
+                  dotSize: 4,
+                  dotBgColor: Colors.transparent,
+                  dotColor: Colors.blue[800],
+                  autoplay: false,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    MainPanel(ad),
+                    Divider(color: Colors.grey[54]),
+                    DescriptionPanel(ad),
+                    Divider(color: Colors.grey[54]),
+                    LocationPanel(ad),
+                    Divider(color: Colors.grey[54]),
+                    UserPanel(ad),
+                    SizedBox(height: 120)
+                  ],
+                ),
+              ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                MainPanel(ad),
-                Divider(color: Colors.grey[54]),
-                DescriptionPanel(ad),
-                Divider(color: Colors.grey[54]),
-                LocationPanel(ad),
-                Divider(color: Colors.grey[54]),
-                UserPanel(ad),
-                SizedBox(height: 16)
-              ],
-            ),
-          ),
+          BottomBar(ad),
         ],
       ),
     );
