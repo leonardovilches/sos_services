@@ -39,13 +39,13 @@ class MyApp extends StatelessWidget {
       title: 'SOS SERVICES',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.orange,
-        scaffoldBackgroundColor: Colors.orange,
+        primaryColor: Colors.green,
+        scaffoldBackgroundColor: Colors.green,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         appBarTheme: AppBarTheme(elevation: 0),
         textSelectionTheme: TextSelectionThemeData(
           cursorColor: Colors.blue[800],
-          selectionColor: Colors.orange,
+          selectionColor: Colors.green,
           selectionHandleColor: Colors.blue,
         ),
       ),

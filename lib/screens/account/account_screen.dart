@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:path/path.dart';
 import 'package:sos_services/components/custom_drawer/custom_drawer.dart';
+import 'package:sos_services/screens/edit_account/edit_account_screen.dart';
+import 'package:sos_services/screens/myads/myads_screen.dart';
 import 'package:sos_services/stores/user_manager_store.dart';
 
 class AccountScreen extends StatelessWidget {
@@ -38,7 +40,7 @@ class AccountScreen extends StatelessWidget {
                             GetIt.I<UserManagerStore>().user.name,
                             style: TextStyle(
                                 fontSize: 20,
-                                color: Colors.orange,
+                                color: Colors.green,
                                 fontWeight: FontWeight.w900),
                           ),
                           Text(
@@ -54,8 +56,17 @@ class AccountScreen extends StatelessWidget {
                     Align(
                       alignment: Alignment.topRight,
                       child: TextButton(
-                        child: const Text('Excluir'),
-                        onPressed: () {},
+                        child: const Text(
+                          'Editar',
+                          style: TextStyle(color: Colors.green),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => EditAccountScreen(),
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ],
@@ -66,16 +77,22 @@ class AccountScreen extends StatelessWidget {
                 title: Text(
                   'Meus anúncios',
                   style: TextStyle(
-                      color: Colors.orange, fontWeight: FontWeight.w600),
+                      color: Colors.green, fontWeight: FontWeight.w600),
                 ),
                 trailing: Icon(Icons.keyboard_arrow_right),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => MyAdsScreen(),
+                    ),
+                  );
+                },
               ),
               ListTile(
                 title: Text(
                   'Favoritos',
                   style: TextStyle(
-                      color: Colors.orange, fontWeight: FontWeight.w600),
+                      color: Colors.green, fontWeight: FontWeight.w600),
                 ),
                 trailing: Icon(Icons.keyboard_arrow_right),
                 onTap: () {},

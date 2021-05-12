@@ -17,6 +17,7 @@ class CepField extends StatelessWidget {
       children: [
         Observer(builder: (_) {
           return TextFormField(
+            initialValue: cepStore.cep,
             onChanged: cepStore.setCep,
             keyboardType: TextInputType.number,
             inputFormatters: [
@@ -43,7 +44,7 @@ class CepField extends StatelessWidget {
               return Container();
             else if (cepStore.address == null && cepStore.error == null)
               return LinearProgressIndicator(
-                valueColor: AlwaysStoppedAnimation(Colors.orange),
+                valueColor: AlwaysStoppedAnimation(Colors.green),
                 backgroundColor: Colors.transparent,
               );
             else if (cepStore.error != null)

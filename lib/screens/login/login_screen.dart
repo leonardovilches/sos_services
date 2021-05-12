@@ -88,7 +88,7 @@ class LoginScreen extends StatelessWidget {
                               'Esqueceu sua senha?',
                               style: TextStyle(
                                 decoration: TextDecoration.underline,
-                                color: Colors.orange,
+                                color: Colors.green,
                               ),
                             ),
                             onTap: () {},
@@ -162,7 +162,7 @@ class LoginScreen extends StatelessWidget {
                               'Cadastre-se',
                               style: TextStyle(
                                 decoration: TextDecoration.underline,
-                                color: Colors.orange,
+                                color: Colors.green,
                                 fontSize: 16,
                               ),
                             ),

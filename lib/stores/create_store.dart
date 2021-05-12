@@ -5,6 +5,7 @@ import 'package:sos_services/models/address.dart';
 import 'package:sos_services/models/category.dart';
 import 'package:sos_services/repositories/ad_repository.dart';
 import 'package:sos_services/stores/user_manager_store.dart';
+import 'package:sos_services/helpers/extensions.dart';
 
 import 'cep_store.dart';
 part 'create_store.g.dart';
@@ -12,6 +13,21 @@ part 'create_store.g.dart';
 class CreateStore = _CreateStore with _$CreateStore;
 
 abstract class _CreateStore with Store {
+  _CreateStore(this.ad) {
+    title = ad.title ?? '';
+    description = ad.description ?? '';
+    images = ad.images.asObservable();
+    category = ad.category;
+    hidePhone = ad.hidePhone;
+    priceText = ad.price?.toStringAsFixed(2) ?? '';
+
+    if (ad.address != null)
+      cepStore = CepStore(ad.address.cep);
+    else
+      cepStore = CepStore(null);
+  }
+
+  final Ad ad;
   ObservableList images = ObservableList();
 
   @computed
@@ -72,7 +88,7 @@ abstract class _CreateStore with Store {
       return 'Campo obrigatório';
   }
 
-  CepStore cepStore = CepStore();
+  CepStore cepStore;
 
   @computed
   Address get address => cepStore.address;
@@ -144,8 +160,6 @@ abstract class _CreateStore with Store {
 
   @action
   Future<void> _send() async {
-    final ad = Ad();
-
     ad.title = title;
     ad.description = description;
     ad.category = category;

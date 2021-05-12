@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:sos_services/components/custom_drawer/custom_drawer.dart';
+import 'package:sos_services/components/empty_card.dart';
 import 'package:sos_services/stores/home_store.dart';
 import 'components/create_ad_button.dart';
 import 'components/ad_tile.dart';
@@ -110,31 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         );
                       if (homeStore.adList.isEmpty)
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(
-                                Icons.border_clear,
-                                color: Colors.white,
-                                size: 100,
-                              ),
-                              const SizedBox(
-                                height: 8,
-                              ),
-                              Text(
-                                'Huuum...nenhum anúncio encontrado!',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              )
-                            ],
-                          ),
-                        );
+                        return EmptyCard('Huuum...nenhum anúncio encontrado.');
                       return ListView.builder(
                         controller: scrollController,
                         itemCount: homeStore.itemCount,
@@ -148,7 +125,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           homeStore.loadNextPage();
                           return Container(
                             child: LinearProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation(Colors.orange),
+                              valueColor: AlwaysStoppedAnimation(Colors.green),
                             ),
                           );
                         },

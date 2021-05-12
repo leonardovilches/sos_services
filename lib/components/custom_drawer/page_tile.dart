@@ -15,10 +15,10 @@ class PageTile extends StatelessWidget {
         label,
         style: TextStyle(
             fontWeight: FontWeight.w700,
-            color: highlighted ? Colors.orange : Colors.black54),
+            color: highlighted ? Colors.green : Colors.black54),
       ),
       leading:
-          Icon(iconData, color: highlighted ? Colors.orange : Colors.black54),
+          Icon(iconData, color: highlighted ? Colors.green : Colors.black54),
       onTap: onTap,
     );
   }

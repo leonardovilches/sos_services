@@ -91,6 +91,9 @@ class AdRepository {
 
       final parseUser = ParseUser('', '', '')..set(keyUserId, ad.user.id);
       final adObject = ParseObject(keyAdTable);
+
+      if (ad.id != null) adObject.objectId = ad.id;
+
       final parseAcl = ParseACL(owner: parseUser);
       parseAcl.setPublicReadAccess(allowed: true);
       parseAcl.setPublicWriteAccess(allowed: false);
@@ -147,5 +150,51 @@ class AdRepository {
     } catch (e) {
       return Future.error('Falha ao salvar imagens.');
     }
+  }
+
+  Future<List<Ad>> getMyAds(User user) async {
+    final currentUser = ParseUser('', '', '')..set(keyUserId, user.id);
+    final queryBuilder = QueryBuilder<ParseObject>(
+      ParseObject(keyAdTable),
+    );
+    queryBuilder.setLimit(100);
+    queryBuilder.orderByDescending(keyAdCreateAt);
+    queryBuilder.whereEqualTo(keyAdOwner, currentUser.toPointer());
+    queryBuilder.includeObject([keyAdCategory, keyAdOwner]);
+
+    final response = await queryBuilder.query();
+    if (response.success && response.results != null) {
+      return response.results.map((po) => Ad.fromParse(po)).toList();
+    } else if (response.success && response.results == null) {
+      return [];
+    } else {
+      return Future.error(
+        ParseErrors.getDescription(response.error.code),
+      );
+    }
+  }
+
+  Future<void> sold(Ad ad) async {
+    final parseObject = ParseObject(keyAdTable)..set(keyAdId, ad.id);
+
+    parseObject.set(keyAdStatus, AdStatus.SOLD.index);
+
+    final response = await parseObject.save();
+    if (!response.success)
+      return Future.error(
+        ParseErrors.getDescription(response.error.code),
+      );
+  }
+
+  Future<void> delete(Ad ad) async {
+    final parseObject = ParseObject(keyAdTable)..set(keyAdId, ad.id);
+
+    parseObject.set(keyAdStatus, AdStatus.DELETED.index);
+
+    final response = await parseObject.save();
+    if (!response.success)
+      return Future.error(
+        ParseErrors.getDescription(response.error.code),
+      );
   }
 }

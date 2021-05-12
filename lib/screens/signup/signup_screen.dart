@@ -175,7 +175,7 @@ class SignUpScreen extends StatelessWidget {
                               'Entrar',
                               style: TextStyle(
                                 decoration: TextDecoration.underline,
-                                color: Colors.orange,
+                                color: Colors.green,
                                 fontSize: 16,
                               ),
                             ),
